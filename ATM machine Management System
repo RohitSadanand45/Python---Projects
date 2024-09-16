@@ -1,0 +1,121 @@
+import pyttsx3
+from datetime import datetime
+engine = pyttsx3.init()
+
+username = 'Surya'
+password= '1803'
+registered_mobile_number = "123456780"
+
+def speak(text):
+      engine.say(text)
+      engine.runAndWait()
+
+print(f"                            CITY BANK OF HYDERABAD                        ")
+speak("CITY BANK OF HYDERABAD")
+
+languages = {
+    1: "English",
+    2: "Hindi",
+    3: "Telugu"
+}
+print("Select your language:")
+speak("Select your language")
+for key, value in languages.items():
+    print(f"{key}. {value}")
+language_choice = int(input("Enter the number corresponding to your language: "))
+now = datetime.now()
+current_time = now.strftime("%Y-%m-%d %H:%M:%S")
+print({current_time})
+if language_choice == 1:
+     print(f"Hello {username}, welcome to the City Bank of Hyderbad!")
+     speak(f"Hello {username}, welcome to city bank of hyderabad")
+elif language_choice ==2:
+     print(f"Namaskar {username}, City Bank of Hyderabad ko apko Swagath hai!")
+     speak(f"Namaskar {username},city bank of hyderabad ko apko swagath hai")
+elif language_choice ==3:
+     print(f"Namaskaram {username}, City Bank of Hyderbad ki meeku Swagatham!")
+     speak(f"Namaskaram {username}, city bank of hyderabad ki meeku Swagatham")
+print('''
+    1.Deposit
+    2.Withdraw            
+    3.Ministatement
+    4.PIN CHANGE
+    5.Generate PIN
+    6.Exit            
+          ''')
+amount=50000
+speak("select your option") 
+option= int(input("Select your option:"))
+if option==1:
+        speak("Enter the amount") 
+        dep=int(input("Enter the amount"))
+        speak("Enter your Pin")    
+        c_pass=str(input("Enter your PIN:"))
+        amount+=dep
+        speak("Amount deposited successfully")
+        print("Amount Deposited Successfully")       
+elif option==2:
+            speak("Enter the amount") 
+            withdrawal_amount = int(input("Enter your amount: "))
+            speak("Enter your Pin") 
+            c_pass=str(input("Enter your PIN:"))
+            
+            amount-=withdrawal_amount
+            if withdrawal_amount > amount:
+                  speak("Insufficient Balance")
+                  print("Insufficient Balance")
+                  
+            else:
+                speak("Amount Withdrawal Successful")
+                print("Amount Withdrawal Successful")                
+elif option==3:
+         speak("Enter your Pin")
+         c_pass=str(input("Enter your PIN:"))
+         print("City Bank of Hyderabad")
+         print("Username:",username)
+         print("Total amount:",amount)
+         print("Registered mobile number:",registered_mobile_number)
+         print("Thanks for Visiting")
+elif option == 4:
+    speak("Enter your Pin")
+    c_pass = input("Enter your PIN: ")
+    print(f"One-Time-Password (OTP) is sent to the registered mobile number: {registered_mobile_number}")
+    next_step = input("If received, click 'next': ")
+    speak("Enter OTP")
+    print(int(input("Enter OTP:")))
+    speak("Enter new PIN")
+    new_pin =(int(input("Enter new PIN:")))
+    next_step = input("if Confirm, click 'next': ")
+    c_pass = new_pin
+    speak("PIN updated Successfully")
+    print("PIN UPDATED SUCCESSFULLY") 
+    exit()
+elif option == 5:
+      new_pin = input("To generate New pin, click next:")
+      print(f"One-Time-Password(OTP)is sent to the registered mobile number: {registered_mobile_number}")
+      next_step = input("If received, click 'next': ")
+      speak("Enter OTP")
+      print(int(input("Enter OTP:")))
+      speak("Enter new PIN")     
+      print(int(input("Enter new PIN:")))     
+      next_step = input("if Confirm, click 'next': ")
+      c_pass=new_pin
+      speak("New PIN generated Successfully")     
+      print("New PIN Generated Successfully")      
+elif option==6:
+         exit()
+else:
+     speak("Please Enter correct PIN")
+     print("Please enter correct PIN")
+     
+if option != 3 and  option != 4 and option != 5:
+    speak("Do you want to check the balanace")
+    show_balance = input("Do you want to see your balance? (yes/no): ").strip().lower()
+    
+    if show_balance == 'yes':
+        print("Total amount:", amount)
+        speak(amount)
+    elif show_balance == 'no':
+         speak("Thank you for using our services")
+         print("Thank you for using our services!")
+       
