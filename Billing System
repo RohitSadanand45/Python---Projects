@@ -1,0 +1,96 @@
+from datetime import datetime
+
+print("             SRI SAI RETAIL TRADERS                          ")
+name = input("Enter Customer name: ")
+Contact = int(input("Enter Customer mobile number: "))
+
+lists = '''
+Rice            Rs 25/kg
+Sugar           Rs 35/kg
+Salt            Rs 30/kg
+Oil             Rs 120/kg
+Paneer          Rs 80/250gms
+Toothpaste      Rs 35/100gms
+Ghee            Rs 600/kg
+Basmati Rice    Rs 40/kg
+Tooth Brush     Rs 30/pc
+Ice cream       Rs 10/100gms
+Bread Packet    Rs 40/500gms
+'''
+print(lists)
+
+price = 0
+pricelist = []
+TotalPrice = 0
+Finalfinalprice = 0
+ilist = []
+qlist = []
+plist = []
+
+items = {
+    'rice': 25,
+    'sugar': 35,
+    'salt': 30,
+    'oil': 120,
+    'paneer': 80,
+    'toothpaste': 35,
+    'ghee': 600,
+    'basmati rice': 40,
+    'toothbrush': 30,
+    'icecream': 10,
+    'bread packet': 40
+}
+
+Storeoption = {
+    1: "Buy",
+    2: "Exit"
+}
+
+for key, value in Storeoption.items():
+    print(f"{key}. {value}")
+
+option = int(input("Select your option: "))
+
+if option == 1:
+    while True:
+        item = input("Enter the item you want to buy (or type 'done' to finish): ").lower()
+        if item == 'done':
+            break
+        if item in items.keys():
+            quantity = int(input("Enter Quantity: "))
+            price = quantity * items[item]
+            pricelist.append((item, quantity, items[item], price))
+            TotalPrice += price
+            ilist.append(item)
+            qlist.append(quantity)
+            plist.append(price)
+        else:
+            print("ITEM NOT FOUND!")
+    
+    # Apply 20% discount if total amount is above 700
+    if TotalPrice > 700:
+        discount_amount = (TotalPrice * 20) / 100
+        TotalPrice -= discount_amount
+    
+    GST = (TotalPrice * 3) / 100
+    FinalAmount = GST + TotalPrice
+
+    if FinalAmount != 0:
+        print(25 * "=", "SRI SAI RETAIL TRADERS", 25 * "=")
+        print(28 * " ", "Hyderabad")
+        print("Date:", datetime.now())
+        print("Customer name:", name)
+        print("Customer Contact Details:", Contact)
+        print(75 * "-")
+        print("S.NO", 8 * " ", 'Items', 8 * " ", 'Quantity', 3 * " ", 'Price')
+        for i in range(len(pricelist)):
+            print(i + 1, 8* ' ',5*' ', ilist[i], 9* ' ', qlist[i], 9* " ", plist[i])
+        print(75 * "-")
+        print(50 * " ", 'Total Amount:', 'Rs', TotalPrice)
+        print('GST Amount:', 50 * " ", 'Rs', GST)
+        print(75 * "-")
+        print(50 * " ", 'Final Amount:', 'Rs', FinalAmount)
+        print(75 * "-")
+        print(50 * " ", "Thanks for Visiting")
+elif option == 2:
+    exit()
