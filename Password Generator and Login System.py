@@ -90,7 +90,7 @@ else:
 save_credentials(username, password)
 print(" Account created successfully!")
 
-# 🔄 Reload all users (to include the newly saved one)
+#  Reload all users (to include the newly saved one)
 all_users = load_credentials()
 
 # Simulate login

@@ -1,6 +1,6 @@
 from datetime import datetime
 
-print("             SRI SAI RETAIL TRADERS                          ")
+print("             ABC MART                         ")
 name = input("Enter Customer name: ")
 Contact = int(input("Enter Customer mobile number: "))
 
